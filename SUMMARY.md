@@ -5,7 +5,9 @@
 * [简介](README.md)
 * [安装](ru-men/an-zhuang.md)
 * [示例](ru-men/shi-li.md)
-* [声明](ru-men/sheng-ming.md)
+* [注意事项](ru-men/zhu-yi-shi-xiang.md)
+* [更新日志](ru-men/geng-xin-ri-zhi/README.md)
+  * [v2.0.0](ru-men/geng-xin-ri-zhi/v2.0.0.md)
 
 ## EVM
 
