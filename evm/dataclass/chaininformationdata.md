@@ -4,20 +4,20 @@
 
 ## 字段说明
 
-| 字段           | 类型          | 说明               |
-| -------------- | ------------- | ------------------ |
-| chain_id       | int           | 链 ID              |
-| block_number   | BlockNumber   | 当前区块高度       |
-| gas_price      | Wei           | Gas 价格           |
-| timeslot       | Optional[int] | 平均出块时间(可选) |
-| client_version | Optional[str] | 客户端版本(可选)   |
+| 字段              | 类型             | 说明         |
+| --------------- | -------------- | ---------- |
+| chain\_id       | int            | 链 ID       |
+| block\_number   | BlockNumber    | 当前区块高度     |
+| gas\_price      | Wei            | Gas 价格     |
+| timeslot        | Optional\[int] | 平均出块时间(可选) |
+| client\_version | Optional\[str] | 客户端版本(可选)  |
 
 ## 示例代码
 
 ```python
 from poseidon.evm import Chain
 
-chain = Chain("https://eth-mainnet.g.alchemy.com/v2/YOUR-API-KEY")
+chain = Chain("https://eth-sepolia.g.alchemy.com/v2/YOUR-API-KEY")
 info: ChainInformationData = chain.get_chain_information()
 
 print(f"Chain ID: {info.chain_id}")
