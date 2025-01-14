@@ -1,59 +1,41 @@
-# recover_typed_message
+# convert_equivalent_signature
 
-通过结构化消息数据和签名还原出签署者的账户地址。
+根据 ECDSA 签名可延展性原理，生成另一个等效的签名。
 
 ## 方法定义
 
 ```python
 @staticmethod
-def recover_typed_message(domain_data: dict, message_types: dict, message_data: dict, signature: HexBytes) -> Optional[SignedMessageData]
+def convert_equivalent_signature(signature: HexBytes) -> Optional[SignatureData]:
 ```
 
 ## 参数说明
 
-| 参数          | 类型     | 说明         |
-| ------------- | -------- | ------------ |
-| domain_data   | dict     | 域数据       |
-| message_types | dict     | 消息类型定义 |
-| message_data  | dict     | 消息数据     |
-| signature     | HexBytes | 签名         |
+| 参数      | 类型     | 说明     |
+| --------- | -------- | -------- |
+| signature | HexBytes | 原始签名 |
 
 ## 返回值
 
-返回 SignedMessageData 对象,包含以下字段:
+返回 SignatureData 对象,包含以下字段:
 
-| 字段           | 类型            | 说明       |
-| -------------- | --------------- | ---------- |
-| message_hash   | HexBytes        | 消息哈希   |
-| message        | str             | 原始消息   |
-| signer         | ChecksumAddress | 签名者地址 |
-| signature_data | SignatureData   | 签名数据   |
+| 字段      | 类型     | 说明      |
+| --------- | -------- | --------- |
+| signature | HexBytes | 完整签名  |
+| r         | HexBytes | 签名 r 值 |
+| s         | HexBytes | 签名 s 值 |
+| v         | HexBytes | 签名 v 值 |
 
 ## 示例代码
 
 ```python
-# 恢复 EIP-712 结构化数据签名者
-domain_data = {
-    "name": "MyDApp",
-    "version": "1",
-    "chainId": 1,
-    "verifyingContract": "0x..."
-}
+# 生成等效签名
+original_signature = HexBytes("0x...")
+equivalent_signature = Utils.convert_equivalent_signature(original_signature)
 
-message_types = {
-    "Person": [
-        {"name": "name", "type": "string"},
-        {"name": "wallet", "type": "address"}
-    ]
-}
-
-message_data = {
-    "name": "Bob",
-    "wallet": "0x..."
-}
-
-signature = HexBytes("0x...")  # 65 字节的签名
-signed_data = Utils.recover_typed_message(domain_data, message_types, message_data, signature)
-if signed_data:
-    print(f"Signer: {signed_data.signer}")
+if equivalent_signature:
+    print(f"Equivalent Signature: {equivalent_signature.signature.hex()}")
+    print(f"r: {equivalent_signature.r.hex()}")
+    print(f"s: {equivalent_signature.s.hex()}")
+    print(f"v: {equivalent_signature.v.hex()}")
 ```
