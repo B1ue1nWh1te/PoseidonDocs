@@ -61,13 +61,13 @@
   * [assembly\_to\_bytecode\_legacy](evm/utils/assembly\_to\_bytecode\_legacy.md)
   * [bytecode\_to\_assembly\_legacy](evm/utils/bytecode\_to\_assembly\_legacy.md)
 
-## TON
-
-* [(stay tuned)](ton/stay-tuned.md)
-
 ## Solana
 
 * [(stay tuned)](solana/stay-tuned.md)
+
+## TON
+
+* [(stay tuned)](ton/stay-tuned.md)
 
 ## Sui
 

@@ -1,6 +1,6 @@
-# **init**
+# \_\_init\_\_
 
-实例初始化。通过合约地址与 ABI 来实例化合约,并与 Account 绑定,后续所有对该合约的调用都会由这一账户发起。
+实例初始化。通过合约地址与 ABI 来实例化合约，并与 Account 绑定，后续所有对该合约的调用都会由这一账户发起。
 
 ## 方法定义
 
@@ -10,18 +10,18 @@ def __init__(self, account: Account, address: ChecksumAddress, abi: dict) -> Non
 
 ## 参数说明
 
-| 参数    | 类型            | 说明     |
-| ------- | --------------- | -------- |
-| account | Account         | 账户实例 |
-| address | ChecksumAddress | 合约地址 |
+| 参数      | 类型              | 说明     |
+| ------- | --------------- | ------ |
+| account | Account         | 账户实例   |
+| address | ChecksumAddress | 合约地址   |
 | abi     | dict            | 合约 ABI |
 
 ## 成员变量
 
-| 变量            | 类型                           | 说明                         |
-| --------------- | ------------------------------ | ---------------------------- |
-| address         | ChecksumAddress                | 合约地址                     |
-| web3py_contract | web3.HTTPProvider.eth.Contract | web3.py 原生的 Contract 实例 |
+| 变量               | 类型                             | 说明                      |
+| ---------------- | ------------------------------ | ----------------------- |
+| address          | ChecksumAddress                | 合约地址                    |
+| web3py\_contract | web3.HTTPProvider.eth.Contract | web3.py 原生的 Contract 实例 |
 
 ## 示例代码
 
