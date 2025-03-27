@@ -1,18 +1,18 @@
-# sign\_message\_raw\_hash
+# sign\_message\_hash
 
-对消息哈希进行原生签名。
+对消息哈希进行 EIP-191 签名。
 
 ## 方法定义
 
 ```python
-def sign_message_raw_hash(self, message_raw_hash: HexBytes) -> Optional[SignedMessageData]
+def sign_message_hash(self, message_hash: HexBytes) -> Optional[SignedMessageData]
 ```
 
 ## 参数说明
 
-| 参数                 | 类型       | 说明      |
-| ------------------ | -------- | ------- |
-| message\_raw\_hash | HexBytes | 待签名消息哈希 |
+| 参数            | 类型       | 说明      |
+| ------------- | -------- | ------- |
+| message\_hash | HexBytes | 待签名消息哈希 |
 
 ## 返回值
 
@@ -38,8 +38,8 @@ SignatureData 包含以下字段:
 
 ```python
 # 签名消息哈希
-message_raw_hash = HexBytes("0x...")
-signed = account.sign_message_raw_hash(message_raw_hash)
+message_hash = HexBytes("0x...")
+signed = account.sign_message_hash(message_hash)
 
 if signed:
     print(f"Message Hash: {signed.message_hash.hex()}")

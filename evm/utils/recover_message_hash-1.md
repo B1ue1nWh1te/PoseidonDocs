@@ -1,20 +1,20 @@
-# recover\_message\_raw\_hash
+# recover\_message\_hash
 
-通过消息哈希和签名还原出签署者的账户地址。
+通过 EIP-191 消息哈希和签名还原出签署者的账户地址。
 
 ## 方法定义
 
 ```python
 @staticmethod
-def recover_message_raw_hash(message_raw_hash: HexBytes, signature: HexBytes) -> Optional[SignedMessageData]
+def recover_message_hash(message_hash: HexBytes, signature: HexBytes) -> Optional[SignedMessageData]
 ```
 
 ## 参数说明
 
-| 参数                 | 类型       | 说明   |
-| ------------------ | -------- | ---- |
-| message\_raw\_hash | HexBytes | 消息哈希 |
-| signature          | HexBytes | 签名   |
+| 参数            | 类型       | 说明   |
+| ------------- | -------- | ---- |
+| message\_hash | HexBytes | 消息哈希 |
+| signature     | HexBytes | 签名   |
 
 ## 返回值
 
@@ -31,9 +31,9 @@ def recover_message_raw_hash(message_raw_hash: HexBytes, signature: HexBytes) ->
 
 ```python
 # 恢复消息哈希签名者
-message_raw_hash = HexBytes("0x...")  # 32 字节的消息哈希
+message_hash = HexBytes("0x...")  # 32 字节的消息哈希
 signature = HexBytes("0x...")     # 65 字节的签名
-signed_data = Utils.recover_message_raw_hash(message_raw_hash, signature)
+signed_data = Utils.recover_message_hash(message_hash, signature)
 if signed_data:
     print(f"Message Hash: {signed_data.message_hash.hex()}")
     print(f"Signer: {signed_data.signer}")
